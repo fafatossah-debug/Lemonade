@@ -63,7 +63,7 @@ fun LemonadeApp() {
         verticalArrangement = Arrangement.Center
     ) {
         Image(
-            painter = painterResources(id = imageRes),
+            painter = painterResource(id = imageRes),
             contentDescription = stringResource(contentDescRes),
             modifier = Modifier
                 .clickable {
