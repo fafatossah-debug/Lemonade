@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -43,12 +45,10 @@ fun LemonadeApp() {
         3 -> Triple(R.drawable.lemon_drink, R.string.tap_lemon, R.string.lemonade_content_description)
         else -> Triple(R.drawable.lemon_restart, R.string.empty_glass, R.string.empty_glass_content_description)
     }
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    )
 }
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    LemonadeTheme {
-        Greeting("Android")
-    }
-}
