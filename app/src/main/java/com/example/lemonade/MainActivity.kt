@@ -90,7 +90,7 @@ fun LemonadeApp() {
 
         Text(
             text = stringResource(textRes),
-            fontSize = 18.sp
+            fontSize = 20.sp
         )
     }
 }
