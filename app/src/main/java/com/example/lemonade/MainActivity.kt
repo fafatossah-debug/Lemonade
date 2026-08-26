@@ -3,29 +3,27 @@ package com.example.lemonade
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.lemonade.ui.theme.LemonadeTheme
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import kotlin.random.Random
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
-            LemonadeTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+            MaterialTheme {
+                Surface(modifier = Modifier.fillMaxSize()) {
                     LemonadeApp()
                 }
             }
@@ -49,6 +47,34 @@ fun LemonadeApp() {
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
-    )
+    ) {
+        Image(
+            painter = painterResources(id = imageRes),
+            contentDescription = stringResource(contentDescRes),
+            modifier = Modifier
+                .clickable {
+                    when (etapeActuelle) {
+                        1 -> {
+                            squeezeCount = Random.nextInt(2, 5)
+                            etapeActuelle = 2
+                        }
+                        2 -> {
+                            squeezeCount--
+                            if (squeezeCount <= 0) {
+                                etapeActuelle = 3
+                            }
+                        }
+                        3 -> etapeActuelle = 4
+                        4 -> etapeActuelle = 1
+                    }
+                }
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Text(
+            text = stringResource(textRes),
+            fontSize = 18.sp
+        )
 }
 
