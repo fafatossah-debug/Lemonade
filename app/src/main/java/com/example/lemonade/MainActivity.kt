@@ -35,7 +35,7 @@ class MainActivity : ComponentActivity() {
 fun LemonadeApp() {
 
     var etapeActuelle by remember { mutableStateOf(1) }
-    var squeezeCount by remember { mutableStateOf(0) }
+    var nbrDeTapotage by remember { mutableStateOf(0) }
 
     val (imageRes, textRes, contentDescRes) = when (etapeActuelle) {
         1 -> Triple(
@@ -69,13 +69,13 @@ fun LemonadeApp() {
                 .clickable {
                     when (etapeActuelle) {
                         1 -> {
-                            squeezeCount = Random.nextInt(2, 5)
+                            nbrDeTapotage = Random.nextInt(2, 5)
                             etapeActuelle = 2
                         }
 
                         2 -> {
-                            squeezeCount--
-                            if (squeezeCount <= 0) {
+                            nbrDeTapotage--
+                            if (nbrDeTapotage <= 0) {
                                 etapeActuelle = 3
                             }
                         }
