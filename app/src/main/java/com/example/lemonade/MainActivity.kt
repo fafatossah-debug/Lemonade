@@ -38,10 +38,24 @@ fun LemonadeApp() {
     var squeezeCount by remember { mutableStateOf(0) }
 
     val (imageRes, textRes, contentDescRes) = when (etapeActuelle) {
-        1 -> Triple(R.drawable.lemon_tree, R.string.lemon_tree, R.string.lemon_tree_content_description)
+        1 -> Triple(
+            R.drawable.lemon_tree,
+            R.string.lemon_tree,
+            R.string.lemon_tree_content_description
+        )
+
         2 -> Triple(R.drawable.lemon_squeeze, R.string.squeeze, R.string.lemon_content_description)
-        3 -> Triple(R.drawable.lemon_drink, R.string.tap_lemon, R.string.lemonade_content_description)
-        else -> Triple(R.drawable.lemon_restart, R.string.empty_glass, R.string.empty_glass_content_description)
+        3 -> Triple(
+            R.drawable.lemon_drink,
+            R.string.tap_lemon,
+            R.string.lemonade_content_description
+        )
+
+        else -> Triple(
+            R.drawable.lemon_restart,
+            R.string.empty_glass,
+            R.string.empty_glass_content_description
+        )
     }
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -58,12 +72,14 @@ fun LemonadeApp() {
                             squeezeCount = Random.nextInt(2, 5)
                             etapeActuelle = 2
                         }
+
                         2 -> {
                             squeezeCount--
                             if (squeezeCount <= 0) {
                                 etapeActuelle = 3
                             }
                         }
+
                         3 -> etapeActuelle = 4
                         4 -> etapeActuelle = 1
                     }
@@ -76,5 +92,6 @@ fun LemonadeApp() {
             text = stringResource(textRes),
             fontSize = 18.sp
         )
+    }
 }
 
