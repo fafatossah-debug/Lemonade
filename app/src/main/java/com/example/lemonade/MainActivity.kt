@@ -13,6 +13,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -61,18 +62,19 @@ fun LemonadeApp() {
     }
     Column(modifier = Modifier.fillMaxSize()) {
 
-        // Barre jaune du haut
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Color(0xFFFFDE03))
-                .padding(16.dp)
+                .height(70.dp)
+                .background(Color(0xFFEFDD5E)),
+            contentAlignment = Alignment.Center
         ) {
             Text(
                 text = "Lemonade",
                 fontWeight = FontWeight.Bold,
                 fontSize = 20.sp
             )
+        }
         }
     Column(
         modifier = Modifier.fillMaxSize(),
